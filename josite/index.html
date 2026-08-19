@@ -1,0 +1,1463 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pat Luxury Apartments — Luxury or Nothing, Uyo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #0c0a08;
+        --ink-soft: #171310;
+        --bone: #f4ecdb;
+        --bone-dim: #cfc3a9;
+        --gold: #e8b54b;
+        --gold-soft: #c99a3c;
+        --ember: #ff5a36;
+        --jade: #163d31;
+        --jade-light: #255643;
+        --rust: #7a3418;
+        --serif: "Fraunces", serif;
+        --sans: "Space Grotesk", sans-serif;
+        --wrap: min(92vw, 1320px);
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        * {
+          animation-duration: 0.001ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.001ms !important;
+        }
+      }
+
+      body {
+        margin: 0;
+        background: var(--ink);
+        color: var(--bone);
+        font-family: var(--sans);
+        font-size: 16px;
+        line-height: 1.5;
+        overflow-x: hidden;
+      }
+
+      img,
+      svg {
+        display: block;
+        max-width: 100%;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      button {
+        font-family: inherit;
+        cursor: pointer;
+      }
+
+      ::selection {
+        background: var(--ember);
+        color: var(--ink);
+      }
+
+      :focus-visible {
+        outline: 3px solid var(--ember);
+        outline-offset: 3px;
+      }
+
+      .wrap {
+        width: var(--wrap);
+        margin-inline: auto;
+      }
+
+      .eyebrow {
+        font-family: var(--sans);
+        font-size: 0.72rem;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: var(--gold);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6em;
+      }
+      .eyebrow::before {
+        content: "";
+        width: 1.6em;
+        height: 1px;
+        background: var(--gold);
+      }
+
+      /* ---------- grain overlay ---------- */
+      .grain {
+        position: fixed;
+        inset: 0;
+        z-index: 999;
+        pointer-events: none;
+        opacity: 0.05;
+        mix-blend-mode: overlay;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      }
+
+      /* ---------- nav ---------- */
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 200;
+        background: rgba(12, 10, 8, 0.86);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(244, 236, 219, 0.12);
+      }
+      .nav .wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.1rem 0;
+      }
+      .brand {
+        font-family: var(--serif);
+        font-weight: 600;
+        font-size: 1.35rem;
+        letter-spacing: 0.01em;
+      }
+      .brand em {
+        font-style: italic;
+        color: var(--gold);
+        font-weight: 400;
+      }
+      .nav-links {
+        display: flex;
+        gap: 2.4rem;
+        font-size: 0.85rem;
+        letter-spacing: 0.03em;
+      }
+      .nav-links a {
+        position: relative;
+        padding-block: 0.2rem;
+      }
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 0;
+        height: 1px;
+        background: var(--gold);
+        transition: width 0.25s ease;
+      }
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+      .nav-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: var(--gold);
+        color: var(--ink);
+        font-weight: 600;
+        font-size: 0.8rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        padding: 0.7rem 1.3rem;
+        border-radius: 999px;
+        transition:
+          transform 0.2s ease,
+          background 0.2s ease;
+      }
+      .nav-cta:hover {
+        background: var(--ember);
+        transform: translateY(-2px);
+      }
+      .nav-burger {
+        display: none;
+        background: none;
+        border: 0;
+        color: var(--bone);
+        font-size: 1.6rem;
+      }
+
+      @media (max-width: 860px) {
+        .nav-links {
+          display: none;
+        }
+        .nav-burger {
+          display: block;
+        }
+      }
+
+      /* ---------- marquee ---------- */
+      .marquee {
+        background: var(--gold);
+        color: var(--ink);
+        overflow: hidden;
+        white-space: nowrap;
+        border-bottom: 1px solid var(--ink);
+      }
+      .marquee__track {
+        display: inline-flex;
+        animation: scroll-left 28s linear infinite;
+        padding-block: 0.55rem;
+      }
+      .marquee__track span {
+        font-family: var(--sans);
+        font-weight: 600;
+        font-size: 0.82rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        padding-inline: 1.4rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 1.4rem;
+      }
+      .marquee__track span::after {
+        content: "✦";
+        opacity: 0.6;
+      }
+      @keyframes scroll-left {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
+
+      /* ---------- hero ---------- */
+      .hero {
+        position: relative;
+        padding: 6.5rem 0 5rem;
+        background:
+          radial-gradient(
+            circle at 82% 18%,
+            rgba(232, 181, 75, 0.16),
+            transparent 45%
+          ),
+          var(--ink);
+        overflow: hidden;
+      }
+      .hero .wrap {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 3rem;
+        align-items: center;
+      }
+      .hero-copy h1 {
+        font-family: var(--serif);
+        font-weight: 600;
+        font-size: clamp(3.4rem, 8vw, 6.8rem);
+        line-height: 0.92;
+        margin: 0.4rem 0 1.4rem;
+        letter-spacing: -0.01em;
+      }
+      .hero-copy h1 .line2 {
+        -webkit-text-stroke: 1.5px var(--bone);
+        color: transparent;
+        font-style: italic;
+      }
+      .hero-copy p {
+        font-size: 1.08rem;
+        color: var(--bone-dim);
+        max-width: 34ch;
+        margin-bottom: 2.2rem;
+      }
+      .hero-actions {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 1rem 1.7rem;
+        border-radius: 999px;
+        font-weight: 600;
+        font-size: 0.85rem;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease;
+      }
+      .btn--solid {
+        background: var(--ember);
+        color: var(--ink);
+      }
+      .btn--solid:hover {
+        transform: translateY(-3px) rotate(-1deg);
+        box-shadow: 0 12px 24px -8px rgba(255, 90, 54, 0.55);
+      }
+      .btn--ghost {
+        border: 1px solid rgba(244, 236, 219, 0.4);
+        color: var(--bone);
+      }
+      .btn--ghost:hover {
+        border-color: var(--gold);
+        color: var(--gold);
+        transform: translateY(-3px);
+      }
+
+      .hero-stats {
+        display: flex;
+        gap: 2.2rem;
+        margin-top: 2.8rem;
+        padding-top: 1.6rem;
+        border-top: 1px solid rgba(244, 236, 219, 0.15);
+      }
+      .hero-stats div b {
+        display: block;
+        font-family: var(--serif);
+        font-size: 1.7rem;
+        color: var(--gold);
+      }
+      .hero-stats div span {
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--bone-dim);
+      }
+
+      /* hero visual collage */
+      .hero-visual {
+        position: relative;
+        aspect-ratio: 1/1.05;
+      }
+      .collage-block {
+        position: absolute;
+        border-radius: 18px;
+        box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.6);
+      }
+      .cb1 {
+        inset: 0 12% 30% 0;
+        background: linear-gradient(155deg, var(--jade-light), var(--jade));
+        background-image:
+          repeating-radial-gradient(
+            circle at 20% 20%,
+            rgba(232, 181, 75, 0.12) 0 2px,
+            transparent 3px 26px
+          ),
+          linear-gradient(155deg, var(--jade-light), var(--jade));
+        transform: rotate(-4deg);
+      }
+      .cb2 {
+        inset: 32% 0 0 18%;
+        background: linear-gradient(155deg, var(--gold), var(--gold-soft));
+        transform: rotate(3deg);
+      }
+      .cb3 {
+        width: 46%;
+        aspect-ratio: 1;
+        right: -6%;
+        top: 8%;
+        background: var(--ember);
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        padding: 1rem;
+      }
+      .cb3 small {
+        font-family: var(--sans);
+        font-weight: 700;
+        font-size: 0.68rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--ink);
+      }
+
+      .seal {
+        position: absolute;
+        width: 150px;
+        height: 150px;
+        left: -10px;
+        bottom: -8px;
+        animation: spin 18s linear infinite;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      .seal-core {
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        width: 46px;
+        height: 46px;
+        background: var(--gold);
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-size: 1.1rem;
+      }
+
+      @media (max-width: 960px) {
+        .hero .wrap {
+          grid-template-columns: 1fr;
+        }
+        .hero-visual {
+          aspect-ratio: 4/3;
+          margin-top: 1rem;
+        }
+      }
+
+      /* ---------- why / bento ---------- */
+      .why {
+        padding: 7rem 0;
+        background: var(--ink);
+      }
+      .section-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 2rem;
+        margin-bottom: 3rem;
+        flex-wrap: wrap;
+      }
+      .section-head h2 {
+        font-family: var(--serif);
+        font-weight: 600;
+        font-size: clamp(2.2rem, 4.4vw, 3.4rem);
+        margin: 0.5rem 0 0;
+        max-width: 14ch;
+      }
+      .section-head p {
+        color: var(--bone-dim);
+        max-width: 34ch;
+        font-size: 0.95rem;
+      }
+
+      .bento {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 1.1rem;
+      }
+      .bento-card {
+        background: var(--ink-soft);
+        border: 1px solid rgba(244, 236, 219, 0.1);
+        border-radius: 20px;
+        padding: 1.8rem;
+        transition:
+          transform 0.3s ease,
+          border-color 0.3s ease;
+      }
+      .bento-card:hover {
+        transform: translateY(-6px);
+        border-color: var(--gold);
+      }
+      .bento-card .ic {
+        font-size: 1.7rem;
+        margin-bottom: 1rem;
+        display: block;
+      }
+      .bento-card h3 {
+        font-family: var(--serif);
+        font-weight: 600;
+        font-size: 1.2rem;
+        margin: 0 0 0.5rem;
+      }
+      .bento-card p {
+        color: var(--bone-dim);
+        font-size: 0.88rem;
+        margin: 0;
+      }
+
+      .bento .span-3 {
+        grid-column: span 3;
+      }
+      .bento .span-2 {
+        grid-column: span 2;
+      }
+      .bento .span-4 {
+        grid-column: span 4;
+      }
+      .bento .feature {
+        background: linear-gradient(150deg, var(--jade-light), var(--jade));
+        grid-row: span 2;
+      }
+      .bento .feature h3 {
+        font-size: 1.6rem;
+      }
+      .bento .feature .tag {
+        display: inline-block;
+        margin-top: 1.2rem;
+        color: var(--gold);
+        font-size: 0.75rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      @media (max-width: 960px) {
+        .bento {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .bento .span-3,
+        .bento .span-2,
+        .bento .span-4 {
+          grid-column: span 2;
+        }
+        .bento .feature {
+          grid-row: auto;
+        }
+      }
+
+      /* ---------- rooms runway ---------- */
+      .rooms {
+        padding: 7rem 0 5rem;
+        background: var(--ink-soft);
+      }
+      .runway {
+        display: flex;
+        gap: 1.6rem;
+        overflow-x: auto;
+        padding: 1rem 0.5rem 2.4rem;
+        scroll-snap-type: x proximity;
+        cursor: grab;
+        scrollbar-width: thin;
+        scrollbar-color: var(--gold) transparent;
+      }
+      .runway:active {
+        cursor: grabbing;
+      }
+      .room-card {
+        flex: 0 0 300px;
+        scroll-snap-align: start;
+        background: var(--ink);
+        border-radius: 22px;
+        overflow: hidden;
+        border: 1px solid rgba(244, 236, 219, 0.1);
+        transition: transform 0.35s ease;
+      }
+      .room-card:nth-child(odd) {
+        transform: rotate(-1.4deg);
+      }
+      .room-card:nth-child(even) {
+        transform: rotate(1.4deg);
+      }
+      .room-card:hover {
+        transform: rotate(0) translateY(-8px);
+      }
+      .room-media {
+        height: 190px;
+        position: relative;
+        display: flex;
+        align-items: flex-end;
+        padding: 1rem;
+      }
+      .room-price {
+        background: var(--bone);
+        color: var(--ink);
+        font-family: var(--serif);
+        font-weight: 600;
+        font-size: 0.82rem;
+        padding: 0.5rem 0.9rem;
+        border-radius: 999px;
+      }
+      .room-body {
+        padding: 1.3rem 1.4rem 1.6rem;
+      }
+      .room-body h3 {
+        font-family: var(--serif);
+        font-weight: 600;
+        font-size: 1.25rem;
+        margin: 0 0 0.5rem;
+      }
+      .room-meta {
+        display: flex;
+        gap: 1rem;
+        font-size: 0.78rem;
+        color: var(--bone-dim);
+        letter-spacing: 0.03em;
+      }
+      .runway-hint {
+        font-size: 0.78rem;
+        color: var(--bone-dim);
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      /* ---------- about / stats ---------- */
+      .about {
+        padding: 7rem 0;
+        background: var(--ink);
+        position: relative;
+      }
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: start;
+      }
+      .about-copy h2 {
+        font-family: var(--serif);
+        font-weight: 600;
+        font-style: italic;
+        font-size: clamp(2rem, 4vw, 2.9rem);
+        line-height: 1.15;
+        margin: 0.6rem 0 1.3rem;
+      }
+      .about-copy p {
+        color: var(--bone-dim);
+        max-width: 46ch;
+      }
+      .stat-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.6rem 1rem;
+      }
+      .stat {
+        border-top: 1px solid rgba(244, 236, 219, 0.15);
+        padding-top: 0.9rem;
+      }
+      .stat b {
+        font-family: var(--serif);
+        font-weight: 600;
+        font-size: clamp(2rem, 4vw, 3rem);
+        color: var(--gold);
+        display: block;
+      }
+      .stat span {
+        font-size: 0.7rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--bone-dim);
+      }
+      @media (max-width: 860px) {
+        .about-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* ---------- services ---------- */
+      .services {
+        background: var(--ink-soft);
+        padding: 6rem 0;
+      }
+      .service-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        gap: 0;
+        border-bottom: 1px solid rgba(244, 236, 219, 0.12);
+        padding: 3.2rem 0;
+      }
+      .service-row:last-child {
+        border-bottom: none;
+      }
+      .service-row:nth-child(even) {
+        direction: rtl;
+      }
+      .service-row:nth-child(even) > * {
+        direction: ltr;
+      }
+      .service-visual {
+        height: 220px;
+        border-radius: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--serif);
+        font-style: italic;
+        font-size: 1.1rem;
+        color: rgba(244, 236, 219, 0.7);
+      }
+      .service-text {
+        padding-inline: 3rem;
+      }
+      .service-text .eyebrow {
+        margin-bottom: 0.6rem;
+      }
+      .service-text h3 {
+        font-family: var(--serif);
+        font-weight: 600;
+        font-size: 2rem;
+        margin: 0.2rem 0 0.8rem;
+      }
+      .service-text p {
+        color: var(--bone-dim);
+        max-width: 44ch;
+        margin-bottom: 1.2rem;
+        font-size: 0.92rem;
+      }
+      .service-link {
+        font-size: 0.82rem;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: var(--gold);
+        border-bottom: 1px solid var(--gold);
+        padding-bottom: 2px;
+      }
+      @media (max-width: 860px) {
+        .service-row,
+        .service-row:nth-child(even) {
+          grid-template-columns: 1fr;
+          direction: ltr;
+        }
+        .service-text {
+          padding-inline: 0;
+          margin-top: 1.4rem;
+        }
+      }
+
+      /* ---------- testimonials marquee ---------- */
+      .testimonials {
+        padding: 6rem 0;
+        background: var(--ink);
+      }
+      .t-track {
+        display: flex;
+        gap: 1.4rem;
+        animation: scroll-left 42s linear infinite;
+        width: max-content;
+        padding-bottom: 1rem;
+      }
+      .testimonials:hover .t-track {
+        animation-play-state: paused;
+      }
+      .t-card {
+        width: 340px;
+        flex: 0 0 auto;
+        background: var(--ink-soft);
+        border: 1px solid rgba(244, 236, 219, 0.1);
+        border-radius: 20px;
+        padding: 1.8rem;
+      }
+      .t-card p {
+        font-family: var(--serif);
+        font-style: italic;
+        font-size: 1.05rem;
+        line-height: 1.5;
+        color: var(--bone);
+        margin: 0 0 1.2rem;
+      }
+      .t-who {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+      }
+      .t-avatar {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: var(--gold);
+        color: var(--ink);
+        display: grid;
+        place-items: center;
+        font-family: var(--serif);
+        font-weight: 600;
+      }
+      .t-who b {
+        display: block;
+        font-size: 0.88rem;
+      }
+      .t-who span {
+        font-size: 0.75rem;
+        color: var(--bone-dim);
+      }
+
+      /* ---------- cta ---------- */
+      .cta {
+        position: relative;
+        background: var(--jade);
+        background-image: radial-gradient(
+          circle,
+          rgba(232, 181, 75, 0.35) 1.5px,
+          transparent 1.6px
+        );
+        background-size: 26px 26px;
+        padding: 7rem 0;
+        text-align: center;
+        overflow: hidden;
+      }
+      .cta h2 {
+        font-family: var(--serif);
+        font-weight: 600;
+        font-size: clamp(2.6rem, 7vw, 5.4rem);
+        line-height: 1;
+        margin: 0 0 1.6rem;
+      }
+      .cta h2 em {
+        font-style: italic;
+        color: var(--gold);
+      }
+      .cta .btn {
+        margin-top: 0.4rem;
+      }
+
+      /* ---------- footer ---------- */
+      footer {
+        background: var(--ink);
+        border-top: 1px solid rgba(244, 236, 219, 0.12);
+        padding: 5rem 0 2rem;
+      }
+      .foot-grid {
+        display: grid;
+        grid-template-columns: 1.3fr 1fr 1fr 1fr;
+        gap: 2.5rem;
+        margin-bottom: 3.5rem;
+      }
+      .foot-brand p {
+        color: var(--bone-dim);
+        font-size: 0.9rem;
+        margin-top: 1rem;
+        max-width: 32ch;
+      }
+      .foot-col h4 {
+        font-size: 0.75rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 1rem;
+      }
+      .foot-col li {
+        margin-bottom: 0.6rem;
+        font-size: 0.9rem;
+        color: var(--bone-dim);
+      }
+      .foot-col a:hover {
+        color: var(--bone);
+      }
+      .foot-social {
+        display: flex;
+        gap: 0.7rem;
+        margin-top: 1rem;
+      }
+      .foot-social a {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        border: 1px solid rgba(244, 236, 219, 0.3);
+        display: grid;
+        place-items: center;
+        font-size: 0.85rem;
+        transition:
+          background 0.2s ease,
+          transform 0.2s ease;
+      }
+      .foot-social a:hover {
+        background: var(--gold);
+        color: var(--ink);
+        transform: translateY(-3px);
+      }
+      .foot-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid rgba(244, 236, 219, 0.12);
+        padding-top: 1.6rem;
+        font-size: 0.78rem;
+        color: var(--bone-dim);
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+      @media (max-width: 860px) {
+        .foot-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
+
+    <header class="nav">
+      <div class="wrap">
+        <a class="brand" href="#top">Pat <em>Luxury</em></a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="#rooms">Rooms</a>
+          <a href="#why">Facilities</a>
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <a class="nav-cta" href="#rooms">Book a stay</a>
+        <button class="nav-burger" aria-label="Open menu">☰</button>
+      </div>
+    </header>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>24/7 Power</span><span>Smartlock Access</span
+        ><span>Chef On Demand</span><span>Free HD Wi‑Fi</span
+        ><span>CCTV Secured</span><span>Uyo, Akwa Ibom</span>
+        <span>24/7 Power</span><span>Smartlock Access</span
+        ><span>Chef On Demand</span><span>Free HD Wi‑Fi</span
+        ><span>CCTV Secured</span><span>Uyo, Akwa Ibom</span>
+      </div>
+    </div>
+
+    <main id="top">
+      <!-- HERO -->
+      <section class="hero">
+        <div class="wrap">
+          <div class="hero-copy">
+            <span class="eyebrow">Short‑let apartments · Uyo</span>
+            <h1>Luxury<br /><span class="line2">or nothing.</span></h1>
+            <p>
+              Fully serviced apartments for business travel and premium short
+              stays — smart-lock privacy, steady power, and hotel-grade comfort
+              in the heart of Uyo.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn--solid" href="#rooms">Explore suites →</a>
+              <a class="btn btn--ghost" href="#contact">Talk to us</a>
+            </div>
+            <div class="hero-stats">
+              <div><b>10+</b><span>Rooms</span></div>
+              <div><b>5+</b><span>Years running</span></div>
+              <div><b>4.5★</b><span>Guest rating</span></div>
+              <div><b>98%</b><span>Would return</span></div>
+            </div>
+          </div>
+
+          <div class="hero-visual" aria-hidden="true">
+            <div class="collage-block cb1"></div>
+            <div class="collage-block cb2"></div>
+            <div class="collage-block cb3">
+              <small>From ₦55,000<br />per night</small>
+            </div>
+            <svg class="seal" viewBox="0 0 200 200">
+              <defs>
+                <path
+                  id="sealPath"
+                  d="M 100,100 m -78,0 a 78,78 0 1,1 156,0 a 78,78 0 1,1 -156,0"
+                />
+              </defs>
+              <circle
+                cx="100"
+                cy="100"
+                r="96"
+                fill="none"
+                stroke="#e8b54b"
+                stroke-width="1.4"
+              />
+              <text
+                font-family="Space Grotesk"
+                font-size="12.5"
+                font-weight="700"
+                fill="#f4ecdb"
+                letter-spacing="3"
+              >
+                <textPath href="#sealPath" startOffset="0%">
+                  LUXURY OR NOTHING • EST. UYO • SHORT‑LET STAYS •
+                </textPath>
+              </text>
+            </svg>
+            <div class="seal-core" aria-hidden="true">✦</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHY / BENTO -->
+      <section class="why" id="why">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">What you get</span>
+              <h2>Apartment facilities, without compromise</h2>
+            </div>
+            <p>
+              Every unit is stocked for a real stay — not just a night. Here's
+              what's already inside.
+            </p>
+          </div>
+
+          <div class="bento">
+            <div class="bento-card feature span-2">
+              <span class="ic">🔑</span>
+              <h3>Smartlock access</h3>
+              <p>
+                Skip the front desk. Your code gets you in, day or night, no
+                waiting on anyone.
+              </p>
+              <span class="tag">Signature amenity</span>
+            </div>
+            <div class="bento-card span-2">
+              <span class="ic">⚡</span>
+              <h3>24/7 power</h3>
+              <p>
+                Uninterrupted supply, every day — work and rest on your own
+                schedule.
+              </p>
+            </div>
+            <div class="bento-card span-2">
+              <span class="ic">🍳</span>
+              <h3>Chef on demand</h3>
+              <p>
+                Request a private chef and have a fresh meal made to your taste.
+              </p>
+            </div>
+            <div class="bento-card span-3">
+              <span class="ic">📶</span>
+              <h3>Free Wi‑Fi</h3>
+              <p>Fast enough for HD and 4K streaming across every room.</p>
+            </div>
+            <div class="bento-card span-3">
+              <span class="ic">🚗</span>
+              <h3>Parking space</h3>
+              <p>Ample, secure parking on-site for every guest.</p>
+            </div>
+            <div class="bento-card span-3">
+              <span class="ic">🎥</span>
+              <h3>CCTV</h3>
+              <p>Round-the-clock surveillance for real peace of mind.</p>
+            </div>
+            <div class="bento-card span-3">
+              <span class="ic">📺</span>
+              <h3>Smart TV</h3>
+              <p>Netflix, YouTube, and more — entertainment sorted.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ROOMS -->
+      <section class="rooms" id="rooms">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Explore awesome suites</span>
+              <h2>Our best rooms</h2>
+            </div>
+            <span class="runway-hint">← Drag to browse →</span>
+          </div>
+
+          <div
+            class="runway"
+            tabindex="0"
+            aria-label="Room gallery, scroll horizontally"
+          >
+            <div class="room-card">
+              <div
+                class="room-media"
+                style="background: linear-gradient(155deg, #255643, #163d31)"
+              >
+                <span class="room-price">From ₦150,000</span>
+              </div>
+              <div class="room-body">
+                <h3>Posh Pavilion — 2Bed</h3>
+                <div class="room-meta">
+                  <span>2 beds</span><span>100 sqm</span>
+                </div>
+              </div>
+            </div>
+            <div class="room-card">
+              <div
+                class="room-media"
+                style="background: linear-gradient(155deg, #c99a3c, #e8b54b)"
+              >
+                <span class="room-price">From ₦60,000</span>
+              </div>
+              <div class="room-body">
+                <h3>Lavender Room</h3>
+                <div class="room-meta">
+                  <span>1 bed</span><span>50 sqm</span>
+                </div>
+              </div>
+            </div>
+            <div class="room-card">
+              <div
+                class="room-media"
+                style="background: linear-gradient(155deg, #7a3418, #ff5a36)"
+              >
+                <span class="room-price">From ₦55,000</span>
+              </div>
+              <div class="room-body">
+                <h3>Coco's Caravan Room</h3>
+                <div class="room-meta">
+                  <span>1 bed</span><span>50 sqm</span>
+                </div>
+              </div>
+            </div>
+            <div class="room-card">
+              <div
+                class="room-media"
+                style="background: linear-gradient(155deg, #163d31, #255643)"
+              >
+                <span class="room-price">From ₦60,000</span>
+              </div>
+              <div class="room-body">
+                <h3>Peace Pod Room</h3>
+                <div class="room-meta">
+                  <span>1 bed</span><span>50 sqm</span>
+                </div>
+              </div>
+            </div>
+            <div class="room-card">
+              <div
+                class="room-media"
+                style="background: linear-gradient(155deg, #e8b54b, #7a3418)"
+              >
+                <span class="room-price">From ₦60,000</span>
+              </div>
+              <div class="room-body">
+                <h3>Cloud Nine Room</h3>
+                <div class="room-meta">
+                  <span>1 bed</span><span>50 sqm</span>
+                </div>
+              </div>
+            </div>
+            <div class="room-card">
+              <div
+                class="room-media"
+                style="background: linear-gradient(155deg, #ff5a36, #c99a3c)"
+              >
+                <span class="room-price">From ₦75,000</span>
+              </div>
+              <div class="room-body">
+                <h3>Sahara Suite Room</h3>
+                <div class="room-meta">
+                  <span>1 bed</span><span>50 sqm</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section class="about" id="about">
+        <div class="wrap about-grid">
+          <div class="about-copy">
+            <span class="eyebrow">About us</span>
+            <h2>We redefine comfort through spaces that feel like home.</h2>
+            <p>
+              Every stay blends modern luxury, privacy, and personal service —
+              from smart amenities to chef-on-demand experiences, built for your
+              rest and your work.
+            </p>
+          </div>
+          <div class="stat-grid">
+            <div class="stat"><b>2+</b><span>Branches</span></div>
+            <div class="stat"><b>10+</b><span>Rooms</span></div>
+            <div class="stat"><b>30+</b><span>Services</span></div>
+            <div class="stat"><b>5+</b><span>Years</span></div>
+            <div class="stat"><b>50+</b><span>Customers</span></div>
+            <div class="stat"><b>98%</b><span>Satisfaction</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVICES -->
+      <section class="services" id="services">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Beyond the room</span>
+              <h2>On-site services</h2>
+            </div>
+          </div>
+
+          <div class="service-row">
+            <div
+              class="service-visual"
+              style="background: linear-gradient(155deg, #255643, #163d31)"
+            >
+              Restaurant
+            </div>
+            <div class="service-text">
+              <span class="eyebrow">Service</span>
+              <h3>Restaurant</h3>
+              <p>
+                A proper kitchen and dining space on-site, for when you'd rather
+                not leave for a good meal.
+              </p>
+              <a class="service-link" href="#contact">Read more</a>
+            </div>
+          </div>
+          <div class="service-row">
+            <div
+              class="service-visual"
+              style="background: linear-gradient(155deg, #c99a3c, #7a3418)"
+            >
+              Spa
+            </div>
+            <div class="service-text">
+              <span class="eyebrow">Service</span>
+              <h3>Spa Center</h3>
+              <p>
+                Slow down between meetings — treatments built for a real reset,
+                not a rushed one.
+              </p>
+              <a class="service-link" href="#contact">Read more</a>
+            </div>
+          </div>
+          <div class="service-row">
+            <div
+              class="service-visual"
+              style="background: linear-gradient(155deg, #ff5a36, #7a3418)"
+            >
+              Fitness
+            </div>
+            <div class="service-text">
+              <span class="eyebrow">Service</span>
+              <h3>Fitness Center</h3>
+              <p>
+                Keep your routine on the road — equipment on-site, no membership
+                needed.
+              </p>
+              <a class="service-link" href="#contact">Read more</a>
+            </div>
+          </div>
+          <div class="service-row">
+            <div
+              class="service-visual"
+              style="background: linear-gradient(155deg, #163d31, #e8b54b)"
+            >
+              Pool
+            </div>
+            <div class="service-text">
+              <span class="eyebrow">Service</span>
+              <h3>Swimming Pool</h3>
+              <p>
+                A quiet lap or a slow float — either way, it's steps from your
+                door.
+              </p>
+              <a class="service-link" href="#contact">Read more</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TESTIMONIALS -->
+      <section class="testimonials">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">Testimonials</span>
+              <h2>What guests say</h2>
+            </div>
+          </div>
+        </div>
+        <div class="t-track" aria-hidden="false">
+          <div class="t-card">
+            <p>
+              "Spotless, cozy, beautifully furnished — the smart TV and
+              chef-on-demand service made it pure convenience."
+            </p>
+            <div class="t-who">
+              <div class="t-avatar">I</div>
+              <div><b>Imaobong U.</b><span>Fashion Designer</span></div>
+            </div>
+          </div>
+          <div class="t-card">
+            <p>
+              "My work trip felt like a vacation. Fast Wi‑Fi, steady power, a
+              genuinely peaceful place to land."
+            </p>
+            <div class="t-who">
+              <div class="t-avatar">M</div>
+              <div><b>Mfon A.</b><span>Software Developer</span></div>
+            </div>
+          </div>
+          <div class="t-card">
+            <p>
+              "The design and comfort are top-tier — the kitchen setup and daily
+              upkeep felt like home, only better."
+            </p>
+            <div class="t-who">
+              <div class="t-avatar">E</div>
+              <div><b>Ekemini E.</b><span>Interior Decorator</span></div>
+            </div>
+          </div>
+          <div class="t-card">
+            <p>
+              "Smartlock check-in was seamless. Excellent service, calm and
+              modern — highly recommend."
+            </p>
+            <div class="t-who">
+              <div class="t-avatar">A</div>
+              <div><b>Aniebiet I.</b><span>Entrepreneur</span></div>
+            </div>
+          </div>
+          <div class="t-card">
+            <p>
+              "Elegant, well-kept, genuinely relaxing. I'll be booking again for
+              my next event trip."
+            </p>
+            <div class="t-who">
+              <div class="t-avatar">N</div>
+              <div><b>Nsikan B.</b><span>Event Planner</span></div>
+            </div>
+          </div>
+          <!-- duplicate for seamless loop -->
+          <div class="t-card">
+            <p>
+              "Spotless, cozy, beautifully furnished — the smart TV and
+              chef-on-demand service made it pure convenience."
+            </p>
+            <div class="t-who">
+              <div class="t-avatar">I</div>
+              <div><b>Imaobong U.</b><span>Fashion Designer</span></div>
+            </div>
+          </div>
+          <div class="t-card">
+            <p>
+              "My work trip felt like a vacation. Fast Wi‑Fi, steady power, a
+              genuinely peaceful place to land."
+            </p>
+            <div class="t-who">
+              <div class="t-avatar">M</div>
+              <div><b>Mfon A.</b><span>Software Developer</span></div>
+            </div>
+          </div>
+          <div class="t-card">
+            <p>
+              "The design and comfort are top-tier — the kitchen setup and daily
+              upkeep felt like home, only better."
+            </p>
+            <div class="t-who">
+              <div class="t-avatar">E</div>
+              <div><b>Ekemini E.</b><span>Interior Decorator</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="cta" id="contact">
+        <div class="wrap">
+          <h2>Ready for <em>luxury</em><br />or nothing?</h2>
+          <a class="btn btn--solid" href="tel:+2347030968954"
+            >Call +234 703 0968 954</a
+          >
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <div class="foot-grid">
+          <div class="foot-brand">
+            <a class="brand" href="#top">Pat <em>Luxury</em></a>
+            <p>
+              Nestled in Uyo, Akwa Ibom State — upscale short-let apartments
+              blending modern amenities with warm, personal service for business
+              travelers and discerning guests.
+            </p>
+            <div class="foot-social">
+              <a
+                href="https://www.instagram.com/pat_luxury_apartment/"
+                target="_blank"
+                rel="noopener"
+                aria-label="Instagram"
+                >IG</a
+              >
+              <a
+                href="https://www.facebook.com/share/17GkbUwnWi/"
+                target="_blank"
+                rel="noopener"
+                aria-label="Facebook"
+                >FB</a
+              >
+            </div>
+          </div>
+          <div class="foot-col">
+            <h4>Useful links</h4>
+            <ul>
+              <li><a href="#about">About us</a></li>
+              <li><a href="#rooms">Book a room</a></li>
+              <li><a href="#contact">Contact us</a></li>
+              <li><a href="#why">Facilities</a></li>
+            </ul>
+          </div>
+          <div class="foot-col">
+            <h4>Address</h4>
+            <ul>
+              <li>No.30 Akwa Efak</li>
+              <li>2 Lanes by Maya /<br />Akwa‑Efak by Udoudoma</li>
+              <li>Uyo, Akwa Ibom</li>
+            </ul>
+          </div>
+          <div class="foot-col">
+            <h4>Contact</h4>
+            <ul>
+              <li><a href="tel:+2347030968954">+234 703 0968 954</a></li>
+              <li>Open 24/7 for bookings</li>
+            </ul>
+          </div>
+        </div>
+        <div class="foot-bottom">
+          <span>© 2026 Pat Luxury Apartments. All rights reserved.</span>
+          <span>Luxury or nothing.</span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // mobile nav toggle
+      const burger = document.querySelector(".nav-burger");
+      const links = document.querySelector(".nav-links");
+      burger?.addEventListener("click", () => {
+        const open = links.style.display === "flex";
+        links.style.display = open ? "none" : "flex";
+        links.style.flexDirection = "column";
+        links.style.position = "absolute";
+        links.style.top = "100%";
+        links.style.left = "0";
+        links.style.right = "0";
+        links.style.background = "rgba(12,10,8,.98)";
+        links.style.padding = "1.5rem 6vw";
+        links.style.gap = "1.2rem";
+      });
+
+      // drag-to-scroll room runway
+      const runway = document.querySelector(".runway");
+      if (runway) {
+        let isDown = false,
+          startX,
+          scrollLeft;
+        runway.addEventListener("pointerdown", (e) => {
+          isDown = true;
+          startX = e.pageX - runway.offsetLeft;
+          scrollLeft = runway.scrollLeft;
+        });
+        ["pointerup", "pointerleave"].forEach((ev) =>
+          runway.addEventListener(ev, () => (isDown = false)),
+        );
+        runway.addEventListener("pointermove", (e) => {
+          if (!isDown) return;
+          e.preventDefault();
+          const x = e.pageX - runway.offsetLeft;
+          runway.scrollLeft = scrollLeft - (x - startX) * 1.4;
+        });
+      }
+    </script>
+    <style>
+        ::-webkit-scrollbar{
+            background-color: black;
+        }
+        ::-webkit-scrollbar-thumb{
+            background: red;
+        }
+        ::-webkit-scrollbar-thumb:hover{
+            background: rgba(231, 7, 7, 0.87);
+        }
+        ::-webkit-scrollbar-thumb:active{
+         background: rgb(168, 15, 15);
+        }
+    </style>
+  </body>
+</html>
