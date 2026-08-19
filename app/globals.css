@@ -1,0 +1,251 @@
+@import "tailwindcss";
+
+/* ============================================================
+   PAT LUXURY SUITES — Global CSS
+   Design System + Custom Utilities + Animations
+   Tailwind CSS v4
+   ============================================================ */
+
+/* --- 1. THEME TOKENS ---------------------------------------- */
+@theme {
+  --font-sans: var(--font-sans), "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-serif), "Playfair Display", ui-serif, Georgia, serif;
+
+  --color-brand-dark: #0b0d13;
+  --color-brand-surface: #121624;
+  --color-brand-surface2: #1a2136;
+  --color-brand-gold-100: #fef3c7;
+  --color-brand-gold-200: #fde68a;
+  --color-brand-gold-300: #fcd34d;
+  --color-brand-gold-400: #fbbf24;
+  --color-brand-gold-500: #f59e0b;
+  --color-brand-gold-600: #d97706;
+}
+
+/* --- 2. KEYFRAMES ------------------------------------------- */
+@keyframes pulse-subtle {
+  0%, 100% { transform: scale(1.05); }
+  50%       { transform: scale(1.08); }
+}
+
+@keyframes gold-shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0);    }
+  50%       { transform: translateY(-10px); }
+}
+
+/* --- 3. BASE STYLES ----------------------------------------- */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background-color: #0b0d13;
+  color: #f1f5f9;
+  font-family: var(--font-sans);
+  min-height: 100vh;
+}
+
+/* Smooth image rendering */
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Focus visible outlines */
+:focus-visible {
+  outline: 2px solid #fbbf24;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0b0d13;
+}
+::-webkit-scrollbar-thumb {
+  background: #fbbf2440;
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #fbbf2480;
+}
+
+/* Text selection */
+::selection {
+  background-color: #fbbf24;
+  color: #000;
+}
+
+/* --- 4. CUSTOM UTILITY CLASSES ------------------------------ */
+
+/* Gold gradient text (used in hero headlines) */
+.gold-gradient-text {
+  background: linear-gradient(
+    135deg,
+    #fde68a 0%,
+    #fbbf24 40%,
+    #f59e0b 70%,
+    #fcd34d 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Animated gold shimmer variant */
+.gold-shimmer-text {
+  background: linear-gradient(
+    90deg,
+    #fde68a 0%,
+    #fbbf24 30%,
+    #fff8e1 50%,
+    #fbbf24 70%,
+    #fde68a 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: gold-shimmer 3s linear infinite;
+}
+
+/* Subtle scale pulse (hero background image) */
+.animate-pulse-subtle {
+  animation: pulse-subtle 8s ease-in-out infinite;
+}
+
+/* Float animation (decorative elements) */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Fade-up entrance */
+.animate-fade-up {
+  animation: fade-up 0.6s ease-out both;
+}
+
+/* Fade-in entrance */
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out both;
+}
+
+/* Glassmorphism card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+}
+
+/* Gold glass card */
+.gold-glass-card {
+  background: linear-gradient(
+    135deg,
+    rgba(251, 191, 36, 0.06) 0%,
+    rgba(245, 158, 11, 0.03) 100%
+  );
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(251, 191, 36, 0.18);
+  border-radius: 1rem;
+}
+
+/* Luxury surface background */
+.surface-luxury {
+  background-color: #121624;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 1rem;
+}
+
+/* Gold divider line */
+.gold-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #fbbf2440 30%,
+    #fbbf24 50%,
+    #fbbf2440 70%,
+    transparent 100%
+  );
+}
+
+/* Primary gold button */
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #000;
+  background: linear-gradient(135deg, #fde68a, #fbbf24, #f59e0b);
+  box-shadow: 0 8px 24px rgba(251, 191, 36, 0.25);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+}
+.btn-gold:hover {
+  background: linear-gradient(135deg, #fef3c7, #fde68a, #fbbf24);
+  box-shadow: 0 12px 32px rgba(251, 191, 36, 0.4);
+  transform: translateY(-1px) scale(1.02);
+}
+.btn-gold:active {
+  transform: scale(0.98);
+}
+
+/* Ghost/outline button */
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+.btn-ghost:hover {
+  color: #fcd34d;
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(251, 191, 36, 0.4);
+}

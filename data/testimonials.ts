@@ -1,0 +1,48 @@
+import { Testimonial } from "@/types";
+
+export const testimonialsData: Testimonial[] = [
+  {
+    id: "review-1",
+    guestName: "Dr. Charles Bassey",
+    guestLocation: "Lagos, Nigeria",
+    stayedRoom: "The Grand Presidential Penthouse",
+    rating: 5,
+    date: "February 2026",
+    quote: "Pat Luxury sets the gold standard for executive short-lets in Nigeria. The 24/7 uninterrupted clean power, lightning-fast 500Mbps fiber internet, and bespoke chef dining made our week-long business strategy retreat completely seamless. Truly world-class.",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
+    tripType: "VIP Diplomat",
+  },
+  {
+    id: "review-2",
+    guestName: "Elena Rostova",
+    guestLocation: "Geneva, Switzerland",
+    stayedRoom: "The Aurora Sky Penthouse",
+    rating: 5,
+    date: "January 2026",
+    quote: "The architectural lines and natural lighting are stunning. Coming from Europe, I was initially cautious about power and security, but Pat Luxury’s keyless biometric locks, discrete security, and serene atmosphere exceeded luxury hotels I’ve stayed at in Dubai and London.",
+    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
+    tripType: "Leisure & Romance",
+  },
+  {
+    id: "review-3",
+    guestName: "Engr. Nsikak Udoh",
+    guestLocation: "Port Harcourt / Abuja",
+    stayedRoom: "Posh Pavilion — 2-Bedroom Executive Residence",
+    rating: 5,
+    date: "December 2025",
+    quote: "We hosted an intimate anniversary dinner in the Posh Pavilion with the private chef service. The cuisine, table styling, and sound isolation were magnificent. The beds are the most comfortable I have ever slept in.",
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80",
+    tripType: "Family Vacation",
+  },
+  {
+    id: "review-4",
+    guestName: "Amara & David Sterling",
+    guestLocation: "London, United Kingdom",
+    stayedRoom: "Lavender Sanctuary Suite",
+    rating: 5,
+    date: "February 2026",
+    quote: "The attention to detail is remarkable. From the organic bath amenities to the prompt airport chauffeur and high-pressure rainfall shower, Pat Luxury provided the peaceful sanctuary we desperately needed during our vacation.",
+    avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80",
+    tripType: "Leisure & Romance",
+  },
+];
